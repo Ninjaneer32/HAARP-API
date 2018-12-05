@@ -1,0 +1,100 @@
+FORMAT: 1A
+HOST: http://haarp.apiblueprint.org/
+
+# HAARP API (Beta)
+
+Use the HAARP advanced algorithms to order rain and huricanes arround the world. This is our Beta version.
+
+## Locations [/locations]
+
+### List All Available Locations [GET]
+
+List all the locations we have already deployed our weather modification facilities and algorithms.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "locations": "List all locations avaiable for the HAARP intervention",
+                "published_at": "2018-12-05T10:06:59.620Z",
+                "choices": [
+                    {
+                        "id":1,
+                        "location": "Prague, Czechia",
+                        "area": 1
+                   }, {
+                        "id":2,
+                        "location": "Sofia, Bulgaria",
+                        "area": 1
+                   }, {
+                        "id":3,
+                        "location": "Kingston, Jamaica",
+                        "area": 3
+                    }, {
+                        "id":4,
+                        "location": "Antananarivo, Madagascar",
+                        "area": 2
+                    }
+                ]
+            }
+        ]
+
+## Order Polluted Air [/order/pollutedair]
+
+### Request Some Contaminated Air For Your Friendly Neighbours And Yourself. [POST]
+
+You could request some very very polluted air at a location. This is our latest feature and it's still in experimental phase. Please help us test it!
+
++ Request (application/json)
+
+        {
+            "location":1, // the ID of the desired location
+            "PM25": 365,
+            "NO2": 108
+            "start": "2018-15-05T10:06:59.620Z",
+            "end": "2018-15-05T10:20:59.620Z",
+            "wind": 1 // in m/s
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /order/pollutedair
+
+    + Body
+
+            {
+                "status": "approved",
+                "approved_at": "2018-12-05T10:07:33.620Z",
+            }
+
+
+## Order Some Rain [/order/rain]
+
+### Request Some HeavyRain As A Surprise To Your Fellow Citizens [POST]
+
+You could request some rain at a location. Be careful! Do not abuse the API. In the BETA version, Snow is not available. Sorry about that.
+
++ Request (application/json)
+
+        {
+            "location":1, // the ID of the desired location
+            "rain": "heavy",
+            "start": "2018-15-05T10:06:59.620Z",
+            "end": "2018-15-05T10:20:59.620Z",
+            "hail-duration": 5 // in minutes 
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /order/rain
+
+    + Body
+
+            {
+                "status": "approved",
+                "approved_at": "2018-12-05T10:07:33.620Z",
+            }
